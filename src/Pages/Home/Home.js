@@ -1,3 +1,4 @@
+import Header from '../../Components/Header/Header';
 import './Home.css';
 
 //Affichage du Header (Importation)
@@ -9,6 +10,7 @@ import './Home.css';
 function Home() {
   return (
     <div>
+      <Header/>
     </div>
   );
 }

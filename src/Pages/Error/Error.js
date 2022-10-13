@@ -1,14 +1,14 @@
-import './Login.css';
+import './Error.css';
 
 //Damien
 //Formulaire login: input(mail), input(mdp)
 //Boutton : Login
 
-function Login() {
+function Error() {
   return (
     <div>
     </div>
   );
 }
 
-export default Login;
+export default Error;
