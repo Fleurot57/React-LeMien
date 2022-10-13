@@ -1,5 +1,6 @@
 import './Logout.css';
 
+//Roger
 //Link de redirection à la déconnection
 
 function Logout() {
