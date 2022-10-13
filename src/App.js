@@ -1,9 +1,10 @@
 import './App.css';
 
+//function Router
+
 function App() {
   return (
     <div>
-      wxcxwcjkjxkcjxwcjxwcxcwxcjxwkcjxwcxcxwcxwcxwcxc
     </div>
   );
 }
