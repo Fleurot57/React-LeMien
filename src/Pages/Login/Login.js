@@ -7,6 +7,11 @@ import './Login.css';
 function Login() {
   return (
     <div>
+      <p>Connection</p>
+      <form>
+          Adresse E-mail :
+        <input type="text" placeholder="E-mail"></input>
+      </form>
     </div>
   );
 }

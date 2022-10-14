@@ -1,14 +1,16 @@
-import Home from "./Pages/Home/Home";
 
 import './App.css';
-
-//laura
-//function Router
+import Header from './Components/Header/Header';
 
 function App() {
+
   return (
   <div>
-  <Home/>
+   
+<Header/>
+
+
+ 
   </div>
   )
 }

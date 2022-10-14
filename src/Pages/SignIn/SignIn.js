@@ -8,6 +8,7 @@ import './SignIn.css';
 function SignIn() {
   return (
     <div>
+      <p>Inscription</p>
     </div>
   );
 }
