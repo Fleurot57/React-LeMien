@@ -29,11 +29,11 @@ function Header() {
   </div>
 
   <Routes>  
-    <Route exact path='/' element={< Home />}></Route>  
-    <Route exact path='/login' element={< Login />}></Route>  
-    <Route exact path='/signin' element={< SignIn />}></Route>
-    <Route exact path='/createpost' element={< CreatePost />}></Route>  
-    <Route exact path='/profil' element={< Profil />}></Route>  
+    <Route path='/' element={< Home />}></Route>  
+    <Route path='/login' element={< Login />}></Route>  
+    <Route path='/signin' element={< SignIn />}></Route>
+    <Route path='/createpost' element={< CreatePost />}></Route>  
+    <Route path='/profil' element={< Profil />}></Route>  
   </Routes>
 
 </Router>
