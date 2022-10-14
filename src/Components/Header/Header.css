@@ -1,9 +1,86 @@
-nav ul {
+.navigation nav {
+    background-color: #2d5be3;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;}
+
+.navigation nav ul {
     position: relative;
     display: flex;
     justify-content: center;
+    margin: 0;
+    padding: 1%;
 }
-nav ul li {
+
+.navigation nav ul li {
     list-style-type: none;
     margin: 1%
+}
+
+.navigation nav ul li a{
+    color:#fff
+}
+
+.navigation nav ul div{
+    float: right;
+    position: relative;
+    left: 28%;
+    display: flex;
+    align-items: center;
+}
+
+.navigation nav ul div li {
+    margin: 1%;
+    margin-right: 5%;
+}
+
+.btn-login {
+    padding: 8px 25px;
+    font-weight: 500;
+    border-radius: 4px;
+    color: #000 !important;
+    background-color: #fff;
+}
+
+.btn-login {
+    width: 50%;
+    margin-top: 2% !important;
+    left: 8%;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    transition: all 250ms;
+}
+
+.btn-login form .descript-login {
+    position: absolute;
+    right: 52vw;
+    top: 45vh;
+    width: 23vw;
+    text-align: left;
+}
+
+.btn-login form div button:hover,
+.btn-login form div button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.btn-login form div button:hover {
+  transform: translateY(-1px);
+}
+
+.btn-login form div button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
 }

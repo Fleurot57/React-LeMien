@@ -12,16 +12,18 @@ function Header() {
 
   <Router>
 
-  <div>
+  <div className="navigation">
  
     <nav>
 
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/signin">SignIn</Link></li>
-        <li><Link to="/createpost">CreatePost</Link></li>
-        <li><Link to="/profil">Profil</Link></li>
+        <li><Link to="/"><span>Accueil</span></Link></li>
+        <li><Link to="/profil"><span>Mon profil</span></Link></li>
+        <li><Link to="/createpost"><span>+ nouvelle publication</span></Link></li>
+      <div>
+        <li><Link className="btn-login" to="/signup"><span>Inscription</span></Link></li>
+        <li><Link className="btn-login" to="/login"><span>Connexion</span></Link></li>
+      </div>
       </ul>
 
     </nav>
@@ -31,7 +33,7 @@ function Header() {
   <Routes>  
     <Route path='/' element={< Home />}></Route>  
     <Route path='/login' element={< Login />}></Route>  
-    <Route path='/signin' element={< SignIn />}></Route>
+    <Route path='/signup' element={< SignIn />}></Route>
     <Route path='/createpost' element={< CreatePost />}></Route>  
     <Route path='/profil' element={< Profil />}></Route>  
   </Routes>
