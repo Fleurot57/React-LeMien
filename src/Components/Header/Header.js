@@ -9,29 +9,6 @@ import Profil from "../../Pages/Profil/Profil";
 function Header() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign up</Link>
-            </li>
-            <li>
-              <Link to="/createpost">CreatePost</Link>
-            </li>
-            <li>
-              <Link to="/profil">Profil</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-  <Router>
 
   <div className="navigation">
  
@@ -51,15 +28,6 @@ function Header() {
 
   </div>
 
-  <Routes>  
-    <Route path='/' element={< Home />}></Route>  
-    <Route path='/login' element={< Login />}></Route>  
-    <Route path='/signup' element={< SignIn />}></Route>
-    <Route path='/createpost' element={< CreatePost />}></Route>  
-    <Route path='/profil' element={< Profil />}></Route>  
-  </Routes>
-
-</Router>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
