@@ -12,11 +12,11 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /*   const [message, setMessage] = useState(""); */
+ // const [message, setMessage] = useState("");
 
   // States for checking the errors
-  /*   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false); */
+ // const [submitted, setSubmitted] = useState(false);
+ // const [error, setError] = useState(false);
 
   // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
   //Nom, prénom, email, password.
