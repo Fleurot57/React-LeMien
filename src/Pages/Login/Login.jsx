@@ -13,6 +13,7 @@ const [password, setPassword] = useState();
 
 async function handleSubmit () {
   let item =(email, password)
+
   const options = {
     method: "POST",
     headers: {
@@ -26,21 +27,41 @@ async function handleSubmit () {
 }
 
   return (
-    <div className="form-center">
-      <form onSubmit={handleSubmit}>
-        <p class="title-login">Connection</p>
-        <label>
-          <span>Adresse E-mail :</span><input type="text" placeholder="Exemple@gmail.com" onChange={(e) => setEmail(e.target.value)}></input>
-        </label>
-        <label htmlFor="password">
-          <span>Mot de passe :</span><input type="password" placeholder="********" onChange={(e) => setPassword(e.target.value)}></input>
-        </label>
+    <section id="login-section">
+      <div className="center-form">
         <div>
-        <Link to="/signup">Créer un compte ?</Link>
-        <button type="submit">Se connecter</button>
+          <h2 className="mb-4">Connexion</h2>
+          <form onSubmit={handleSubmit} className="login-form">
+            <input
+              required
+              className="mb-1 form-input"
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+            <input
+              required
+              minLength="6"
+              maxLength="16"
+              className="mb-2 form-input"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Mot de passe"
+            />
+            <button type="submit" className="login-btn">
+              Connexion
+            </button>
+          </form>
+          <div id="login-form-bottom">
+            <p className="mb-2 login-account">Tu à un compte ?</p>
+
+            <Link to="/signUp">
+              <button className="login-create-btn">Je m'inscrit</button>
+            </Link>
+          </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
 
