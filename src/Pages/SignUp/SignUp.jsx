@@ -12,19 +12,24 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [message, setMessage] = useState("");
+ // const [message, setMessage] = useState("");
 
   // States for checking the errors
-  // const [submitted, setSubmitted] = useState(false);
-  // const [error, setError] = useState(false);
+ // const [submitted, setSubmitted] = useState(false);
+ // const [error, setError] = useState(false);
 
   // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
   //Nom, prénom, email, password.
   async function handleSubmitSignUp(e) {
     e.preventDefault();
     try {
-      let user = { firstname:firstName, lastname: lastName, email:email, password:password };
-      
+      let user = {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        password: password,
+      };
+
       const options = {
         method: "POST",
         headers: {
@@ -36,9 +41,9 @@ function SignUp() {
         "https://social-network-api.osc-fr1.scalingo.io/lemien/register",
         options
       );
-      
+
       result = await result.json();
-/*       if (result.status === 200) {
+      /*       if (result.status === 200) {
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -107,7 +112,7 @@ function SignUp() {
             <button type="submit" className="sign-up-btn">
               Je m'inscris
             </button>
-  {/*           <div className="message">{message ? <p>{message}</p> : null}</div> */}
+            {/*           <div className="message">{message ? <p>{message}</p> : null}</div> */}
           </form>
           <div id="sign-up-form-bottom">
             <p className="mb-2 create-account">Tu as déjà un compte ?</p>
@@ -115,6 +120,8 @@ function SignUp() {
             <Link to="/login">
               <button className="sign-in-btn">Je m'indentifie</button>
             </Link>
+
+
           </div>
         </div>
       </div>
