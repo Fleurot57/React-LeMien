@@ -1,4 +1,5 @@
 
+import ViewPost from '../../Components/ViewPost/ViewPost';
 import './Home.css';
 
 //Affichage du Header (Importation)
@@ -10,7 +11,7 @@ import './Home.css';
 function Home() {
   return (
     <div>
-      <p>Page d'accueil (post)</p>
+      <ViewPost/>
     </div>
   );
 }
