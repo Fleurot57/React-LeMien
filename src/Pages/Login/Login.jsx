@@ -11,19 +11,21 @@ function Login() {
 const [email, setEmail] = useState();
 const [password, setPassword] = useState();
 
-async function handleSubmit () {
-  let item =(email, password)
-
+async function handleSubmit (e) {
+  e.preventDefault()
+  let item ={email, password}
+  
   const options = {
     method: "POST",
     headers: {
     "Content-Type": "application/json"
     },
-    body: JSON.stringify(item)({
-    })
+    body: JSON.stringify(item)
     };
+    console.log("text")
     let result = await fetch("https://social-network-api.osc-fr1.scalingo.io/lemien/login", options)
     result = await result.json();
+    localStorage.setItem('token', result.token);
 }
 
   return (
