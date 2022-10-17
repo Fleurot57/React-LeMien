@@ -50,17 +50,36 @@
   font-weight: 600;
   font-size: large;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
+  outline: none;
 }
+
+.sign-up-btn:hover {
+  background-color: #f024cd;
+  box-shadow: 10px 15px 20px #f024ce72;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 .sign-in-btn {
   height: 6vh;
   background-color: white;
-  border: 1px solid lightGray;
+  border: 0;
   padding: 1rem;
   font-weight: 600;
   font-size: large;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
+  outline: none;
+}
+
+.sign-in-btn:hover {
+  background-color: #2ee59d;
+  box-shadow: 10px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
 }
 
 .create-account {
