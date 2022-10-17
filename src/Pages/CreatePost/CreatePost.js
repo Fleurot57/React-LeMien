@@ -1,7 +1,8 @@
 import './CreatePost.css';
-import {useEffect, useState } from "react";
+import { useState } from "react";
 import AddPosts from '../../Components/AddPosts/AddPosts';
-
+import Comment from '../../Components/Comment/Comment';
+import Like from '../../Components/Like/Like';
 
 
 function CreatePost() {
@@ -14,37 +15,37 @@ function CreatePost() {
 
   function addPost () {
     PostsList.push(newPost);
-    console.log(newPost)
     setPostsList(PostsList);
-    console.log(PostsList)
-    setNewPost("")
+    postPosts()
    
-    };
+  };
 
-    function textAreaChange (e) {
+  function textAreaChange (e) {
       setNewPost(e.target.value)
-    };
+  };
 
-    async function postPosts() { 
+async function postPosts() { 
       
+  let token = localStorage.getItem("token")
+
       const options = {
         method: "POST",
-        headers: {"Content-Type": "application/json",  "Authorization": "bearer token"},   
+        headers: {"Content-Type": "application/json",  "Authorization": `bearer ${token}`},   
         body: JSON.stringify({
           title: "userName",
           content: newPost,
-        })
-    };
+        }) }
     
    
-      const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/LeMien/post",options);
+    const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/LeMien/post",options);
       let data = await response.json();
   
-      const newPost = data.newPost;
-      console.log(newPost);
-      setNewPost(newPost);
+      const postServeur = data.newPost;
+      console.log(postServeur);
+      setNewPost(postServeur);
     };
-    useEffect(() => {postPosts()}, []);
+
+
 
   return (
     <div className='addPostSection'>
@@ -60,6 +61,7 @@ function CreatePost() {
         </form>
 
         {PostsList.map((displayPost, index) => <AddPosts key= {index} content= {displayPost}/>)}
+       
       </div>
 
 
