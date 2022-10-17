@@ -13,19 +13,15 @@ const [password, setPassword] = useState();
 
 async function handleSubmit () {
   let item =(email, password)
-  let result = await fetch("https://social-network-api.osc-fr1.scalingo.io/lemien/login", options)
-  console.log(email, password)
-
   const options = {
     method: "POST",
     headers: {
     "Content-Type": "application/json"
     },
     body: JSON.stringify(item)({
-    email: email,
-    password: password
     })
     };
+    let result = await fetch("https://social-network-api.osc-fr1.scalingo.io/lemien/login", options)
     result = await result.json();
 }
 
