@@ -2,86 +2,112 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-//Roger
 //Title
 //Formulaire : input(Nom), Input(prénom), input(mail), input(mdp)
-//Button (SignIn)
-//Sign In = se connecter
-//Sign Up = s'inscrire
+//Button (SignUp)
 
 function SignUp() {
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  // States for registration
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleInputChangeSignUp = (e) => {
-    const { id, value } = e.target;
-    if (id === "firstName") {
-      setFirstName(value);
-    }
-    if (id === "lastName") {
-      setLastName(value);
-    }
-    if (id === "email") {
-      setEmail(value);
-    }
-    if (id === "password") {
-      setPassword(value);
-    }
-  };
+  // States for checking the errors
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmitSignUp = () => {
-    console.log(firstName, lastName, email, password);
-  };
+  // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
+  //Nom, prénom, email, password.
+  async function handleSubmitSignUp(e) {
+    e.preventDefault();
+    try {
+      let user = { firstname:firstName, lastname: lastName, email:email, password:password };
+      
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      };
+      let result = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/lemien/register",
+        options
+      );
+      
+      result = await result.json();
+/*       if (result.status === 200) {
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
+        setMessage("L'utilisateur a été créé avec succès");
+      } else {
+        setMessage("Une erreur s'est produite");
+      } */
+    } catch (err) {
+      console.log(err);
+    }
+    console.log(
+      "Prénom :" + firstName,
+      "Nom :" + lastName,
+      "Email :" + email,
+      "Password :" + password
+    );
+  }
 
   return (
     <section id="sign-up-section">
       <div className="center-form">
         <div>
           <h2 className="mb-4">S'inscrire</h2>
-          <form action="" className="sign-up-form">
+          <form onSubmit={handleSubmitSignUp} className="sign-up-form">
             <input
+              required
               className="mb-1 form-input"
               type="text"
               id="lastName"
               value={lastName}
-              onChange={(e) => handleInputChangeSignUp(e)}
+              onChange={(e) => setLastName(e.target.value)}
               placeholder="Nom"
             />
             <input
+              required
               className="mb-1 form-input"
               type="text"
-              value={firstName}
-              onChange={(e) => handleInputChangeSignUp(e)}
               id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               placeholder="Prénom"
             />
             <input
+              required
               className="mb-1 form-input"
               autoComplete="username"
               type="email"
               id="email"
               value={email}
-              onChange={(e) => handleInputChangeSignUp(e)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
             />
             <input
+              required
+              minLength="6"
+              maxLength="16"
               className="mb-2 form-input"
               autoComplete="current-password"
-              type="text"
+              type="password"
               id="password"
               value={password}
-              oncChange={(e) => handleInputChangeSignUp(e)}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Mot de passe"
             />
-            <button
-              onClick={() => handleSubmitSignUp()}
-              type="submit"
-              className="sign-up-btn"
-            >
+            <button type="submit" className="sign-up-btn">
               Je m'inscris
             </button>
+  {/*           <div className="message">{message ? <p>{message}</p> : null}</div> */}
           </form>
           <div id="sign-up-form-bottom">
             <p className="mb-2 create-account">Tu as déjà un compte ?</p>
