@@ -25,8 +25,7 @@ async function handleSubmit (e) {
     console.log("text")
     let result = await fetch("https://social-network-api.osc-fr1.scalingo.io/lemien/login", options)
     result = await result.json();
-    localStorage.setItem('token');
-    localStorage.getItem('token');
+    localStorage.setItem('token', result.token);
 }
 
   return (
