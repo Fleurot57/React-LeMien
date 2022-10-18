@@ -1,6 +1,8 @@
 import "./Login.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Damien
 //Formulaire login: input(mail), input(mdp)
@@ -21,14 +23,24 @@ function Login() {
       },
       body: JSON.stringify(item),
     };
-    console.log("text");
-    let result = await fetch(
-      "https://social-network-api.osc-fr1.scalingo.io/lemien/login",
-      options
-    );
+    let result = await toast.promise (
+      fetch("https://social-network-api.osc-fr1.scalingo.io/lemien/login", options),
+      {
+        pending: 'Promise is pending',
+        success: 'Promise resolved 👌',
+        error: 'Promise rejected 🤯'
+      }
+  );
+  
+    console.log(result)
     result = await result.json();
-    localStorage.setItem("token", result.token);
-  }
+    localStorage.setItem('token', result.token);
+
+    if (!Login) {
+      return null;
+    }
+
+}
 
   return (
     <section id="login-section">
@@ -58,7 +70,9 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Mot de passe"
             />
-            <button type="submit" className="login-btn">
+            <button
+             type="submit"
+             className="login-btn">
               Connexion
             </button>
           </form>
@@ -71,6 +85,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </section>
   );
 }

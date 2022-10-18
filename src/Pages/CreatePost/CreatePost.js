@@ -4,7 +4,6 @@ import AddPosts from '../../Components/AddPosts/AddPosts';
 import Comment from '../../Components/Comment/Comment';
 import Like from '../../Components/Like/Like';
 
-
 function CreatePost() {
 
   const [newPost, setNewPost] = useState("");
@@ -52,7 +51,7 @@ async function postPosts() {
 
       <h3>Create Post</h3>
       
-      <p className='userName'>user:</p>
+      <p className='userName'>user: </p>
       
       <div > 
         <form id="addPostForm" onSubmit={ e=>e.preventDefault()}>
