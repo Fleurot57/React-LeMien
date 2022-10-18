@@ -7,26 +7,28 @@ import { Link } from "react-router-dom";
 //Boutton : Login
 
 function Login() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-const [email, setEmail] = useState();
-const [password, setPassword] = useState();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let item = { email, password };
 
-async function handleSubmit (e) {
-  e.preventDefault()
-  let item ={email, password}
-  
-  const options = {
-    method: "POST",
-    headers: {
-    "Content-Type": "application/json"
-    },
-    body: JSON.stringify(item)
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
     };
-    console.log("text")
-    let result = await fetch("https://social-network-api.osc-fr1.scalingo.io/lemien/login", options)
+    console.log("text");
+    let result = await fetch(
+      "https://social-network-api.osc-fr1.scalingo.io/lemien/login",
+      options
+    );
     result = await result.json();
-    localStorage.setItem('token', result.token);
-}
+    localStorage.setItem("token", result.token);
+  }
 
   return (
     <section id="login-section">
@@ -37,7 +39,10 @@ async function handleSubmit (e) {
             <input
               required
               className="mb-1 form-input"
-              type="text"
+              autoComplete="username"
+              type="email"
+              id="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
             />
@@ -46,7 +51,10 @@ async function handleSubmit (e) {
               minLength="6"
               maxLength="16"
               className="mb-2 form-input"
+              autoComplete="current-password"
               type="password"
+              id="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Mot de passe"
             />
@@ -55,10 +63,10 @@ async function handleSubmit (e) {
             </button>
           </form>
           <div id="login-form-bottom">
-            <p className="mb-2 login-account">Tu à un compte ?</p>
+            <p className="mb-2 login-account">Tu as un compte ?</p>
 
             <Link to="/signUp">
-              <button className="login-create-btn">Je m'inscrit</button>
+              <button className="login-create-btn">Je m'inscris</button>
             </Link>
           </div>
         </div>
