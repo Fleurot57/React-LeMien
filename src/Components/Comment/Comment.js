@@ -6,9 +6,8 @@ function Comment () {
 
     return(
         <div>
-            <textarea defaultValue="Add comment"></textarea>
-            <button>Share</button>
+            <button>Comment</button>
         </div>
     )
 };
-export default Comment();
+export default Comment;

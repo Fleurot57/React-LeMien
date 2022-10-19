@@ -30,18 +30,19 @@ function ViewPost() {
     let data = await response.json();
 
     const posts = data.posts;
-    console.log(posts);
+  
     setPosts(posts);
   };
 
   useEffect(() => {getPosts()}, []);
 
+  console.log(posts);
 
   return (
     <div>
       <h2>Feeds</h2>
       <ul>
-        {posts.map((post, index) => < Post key={index} user={post.user} lePost={post.lePost} />)}
+        {posts.map((post, index) => < Post key={index} user={post.title} lePost={post.content} />)}
       </ul>
     </div>
   );

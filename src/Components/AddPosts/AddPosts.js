@@ -1,10 +1,19 @@
 import './AddPosts.css';
+import Like from "../Like/Like";
+import Comment from "../Comment/Comment";
 
 
-function AddPosts(props){
+
+
+
+function AddPosts({MyUserName, MyPost }){
     return(
         <div className="AddPost">
-            <p>{props.content}</p>
+            <h3>{MyUserName}</h3>
+            <p>{MyPost}</p>
+             <Like/>
+             <Comment/>
+
         </div>
     )
 };

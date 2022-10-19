@@ -1,10 +1,7 @@
 import './Like.css';
 
 
-function Comment () {
-
-    
-
+function Like () {
     
     return(
         <div>
@@ -12,4 +9,4 @@ function Comment () {
         </div>
     )
 };
-export default Comment();
+export default Like;
