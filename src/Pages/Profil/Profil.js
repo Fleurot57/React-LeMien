@@ -1,36 +1,46 @@
 import './Profil.css';
-import { useEffect, useState } from 'react';
+import AddPosts from "../../Components/AddPosts/AddPosts"
+import { useEffect, useState } from "react";
+
+
 
 function Profil() {
+  const [PostsList, setPostsList] = useState([]);
+  
+  async function getMyPosts() { 
+    const options = {
+      method: "GET",
+      headers: {"Content-Type": "application/json"}
+      
+    }
 
-  const [firstname, setfirstname] = useState([])
+    const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/LeMien/posts", options);
+    let data = await response.json();
 
-  const options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "bearer token"
-    },
+    console.log (data);
+
+    const PostsList = data.posts;
+    console.log(PostsList);
+
+// je stock que mes posts dans tableau vide
+//let mesPosts = []
+
+//condition if post correspond à user id > afficher !
+//userId: "634fc412ccaf7f001d95f69f"
+
+    setPostsList(PostsList);
   };
+  useEffect(() => {getMyPosts()}, []);
+  
 
-  const data = async () => {
-    const result = await fetch(
-      "https://social-network-api.osc-fr1.scalingo.io/lemien/register", options)
 
-  result = (await result.json());
+
+  return (
+    <div>
+      <p>My Profil</p>
+      {PostsList.map((post, index) => <AddPosts key= {index} title={post.title} content={post.content}/> )} 
+    </div>
+  );
 }
-
-useEffect(() => {
-  data()
-}, [])
-
-
-    return (
-        <ul>
-          <li key={data.id}>test : {options.firstname}</li>
-        </ul>
-    );
-
-  }
 
 export default Profil;

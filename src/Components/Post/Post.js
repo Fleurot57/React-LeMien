@@ -1,12 +1,26 @@
 import './Post.css';
+import Like from "../Like/Like";
+import Comment from "../CommentBox/CommentBox";
 
 
-function Post({user, lePost }){
+
+
+
+function Post({title, content}){
+
+ 
+
     return(
-        <li className="post">
-            <h3>{user}</h3>
-            <p>{lePost}</p>
-        </li>
+
+        <div className="post">
+            <h3>{title}</h3>
+            <p>{content}</p>
+            <Like/>
+            <Comment/>
+  
+        
+        </div>
+
     )
 };
 

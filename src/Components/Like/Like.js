@@ -1,15 +1,21 @@
 import './Like.css';
+import { useState } from "react";
 
 
-function Comment () {
-
+function Like () {
+    let [likes, setLikes] = useState(0);
     
-
     
+    function handleClick (){
+        likes = likes+1
+        setLikes(likes)
+    }
+
     return(
         <div>
-            <button>Like</button>
+            <p>Vous avez {likes} like</p>
+            <button onClick={handleClick}>Like</button>
         </div>
     )
 };
-export default Comment();
+export default Like;
