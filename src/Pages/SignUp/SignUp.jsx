@@ -1,5 +1,4 @@
 import "./SignUp.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -49,8 +48,14 @@ function SignUp() {
       );
 
       result = await result.json();
+
       console.log(result);
-      if (result.success) {
+      if (
+        result.success &&
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000)
+      ) {
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -68,7 +73,6 @@ function SignUp() {
       "Email :" + email,
       "Password :" + password
     );
-
   }
 
   return (
