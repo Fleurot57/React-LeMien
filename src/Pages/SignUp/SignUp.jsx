@@ -1,4 +1,5 @@
 import "./SignUp.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -35,8 +36,13 @@ const [userProfile, setUserProfile] = useState([]);
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  // Cette fonction asyncrone permet d'envoyer les informations de l'utilisateur à l'API.
-  // La fonctione se déclenche lorsque l'utilisateur souhaite s'inscrire et clique sur « Je m'inscris ».
+  // States for checking the errors
+  // const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
+  //Nom, prénom, email, password.
+
   async function handleSubmitSignUp(e) {
     // J'empêche l'action par défaut de se déclenche.
     // L'action initiale est le recharchement de la page. La page ne se rechargera pas lorsque l'utulisateur clique sur « Je m'inscris ».
@@ -76,19 +82,7 @@ const [userProfile, setUserProfile] = useState([]);
       // Await permet d’attendre qu’une fonction ait fini de s’exécuter et permet de récupérer la valeur retournée dans le cas d’une promesse résolue. Dans le cas d’une promesse rejetée, await ne récupèrera aucune valeur.
       // Je détermine que « result » est le résultat de la promesse (information que je recevrais de l'API)
       result = await result.json();
-
-      // Je logue dans ma console le résultat des informations reçues de la l'API.
-      console.log(result);
-
-      // Je crée une condition qui est la suivante :
-      // Si l'inscription est validé par le l'API, patiente 2 secondes et redirige l'utilisateur vers la page /login.
-      //
-      if (
-        result.success &&
-        setTimeout(() => {
-          navigate("/login");
-        }, 5000)
-      ) {
+      if (result) {
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -116,6 +110,7 @@ const [userProfile, setUserProfile] = useState([]);
       "Email :" + email,
       "Password :" + password
     );
+
   }
 
   return (
@@ -164,7 +159,10 @@ const [userProfile, setUserProfile] = useState([]);
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Mot de passe"
             />
-            <button type="submit" className="sign-up-btn">
+            <button
+              type="submit"
+              className="sign-up-btn"
+            >
               Je m'inscris
             </button>
             <div className="message">{message ? <p>{message}</p> : null}</div>
@@ -178,7 +176,7 @@ const [userProfile, setUserProfile] = useState([]);
           </div>
         </div>
       </div>
-      <ToastContainer />
+      < ToastContainer/>
     </section>
   );
 }

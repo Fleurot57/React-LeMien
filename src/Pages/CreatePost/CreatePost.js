@@ -1,19 +1,16 @@
 import './CreatePost.css';
 import { useState } from "react";
-import AddPosts from '../../Components/AddPosts/AddPosts';
+import { useNavigate } from "react-router-dom";
+
 
 
 function CreatePost() {
 
   const [newPost, setNewPost] = useState("");
-  const [PostsList, setPostsList] = useState([]);
-
-
+  let Navigate = useNavigate ();
  
 
   function addPost () {
-    PostsList.push(newPost);
-    setPostsList(PostsList);
     postPosts()
    
   };
@@ -25,7 +22,7 @@ function CreatePost() {
 async function postPosts() { 
       
   let token = localStorage.getItem("token")
-
+console.log(newPost);
       const options = {
         method: "POST",
         headers: {"Content-Type": "application/json",  "Authorization": `bearer ${token}`},   
@@ -38,9 +35,12 @@ async function postPosts() {
     const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/LeMien/post",options);
       let data = await response.json();
   
-      const postServeur = data.newPost;
-      console.log(postServeur);
-      setNewPost(postServeur);
+      
+if (data.success) {
+  Navigate ("/")
+} 
+ 
+  
     };
 
 
@@ -58,7 +58,7 @@ async function postPosts() {
           <button onClick={addPost}>Share</button>
         </form>
 
-        {PostsList.map((displayPost, index) => <AddPosts key= {index} content= {displayPost}/>)}
+       
        
       </div>
 
