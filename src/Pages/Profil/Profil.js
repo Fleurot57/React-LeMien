@@ -1,4 +1,3 @@
-
 import './Profil.css';
 import AddPosts from "../../Components/AddPosts/AddPosts"
 import { useEffect, useState } from "react";
@@ -31,7 +30,6 @@ function Profil() {
 
     setPostsList(PostsList);
   };
-
   useEffect(() => {getMyPosts()}, []);
   
 

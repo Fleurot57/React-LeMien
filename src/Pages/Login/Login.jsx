@@ -1,16 +1,18 @@
 import "./Login.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Damien
 //Formulaire login: input(mail), input(mdp)
 //Boutton : Login
 
 function Login() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const Navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,21 +25,25 @@ function Login() {
       },
       body: JSON.stringify(item),
     };
-    let result = await toast.promise(
+    let result = await 
       fetch(
         "https://social-network-api.osc-fr1.scalingo.io/lemien/login",
         options
-      ),
-      {
-        pending: "Promise is pending",
-        success: "Promise resolved 👌",
-        error: "Promise rejected 🤯",
-      }
-    );
+      );
 
-    console.log(result);
     result = await result.json();
+    console.log(result);
     localStorage.setItem("token", result.token);
+
+      if (result.success) {
+        setEmail("");
+        setPassword("");
+        setMessage("Connecter avec succée");
+        setTimeout(() => { Navigate("/"); }, 3000);
+        toast.info("Connexion reussi, Redirection")
+      } else {
+        setMessage("Une erreur s'est produite");
+      }
 
 }
 
@@ -72,9 +78,10 @@ function Login() {
             <button type="submit" className="login-btn">
               Connexion
             </button>
+            <div className="message">{message ? <p>{message}</p> : null}</div>
           </form>
           <div id="login-form-bottom">
-            <p className="mb-2 login-account">Tu as un compte ?</p>
+            <p className="mb-2 login-account">Tu n'as pas de compte ?</p>
 
             <Link to="/signUp">
               <button className="login-create-btn">Je m'inscris</button>
@@ -82,7 +89,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <ToastContainer />
+      < ToastContainer/>  
     </section>
   );
 }

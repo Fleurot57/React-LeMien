@@ -1,4 +1,3 @@
-
 import ViewPost from '../../Components/ViewPost/ViewPost';
 import './Home.css';
 
