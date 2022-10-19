@@ -1,8 +1,7 @@
 import './CreatePost.css';
 import { useState } from "react";
 import AddPosts from '../../Components/AddPosts/AddPosts';
-import Comment from '../../Components/Comment/Comment';
-import Like from '../../Components/Like/Like';
+
 
 
 function CreatePost() {
