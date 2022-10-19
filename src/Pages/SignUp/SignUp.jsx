@@ -49,12 +49,14 @@ function SignUp() {
       );
 
       result = await result.json();
-      if (result.status === 200) {
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setPassword("");
-        setMessage("L'utilisateur a été créé avec succès");
+      if (result.status && !200) {
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPassword("");
+          setTimeout(() => { navigate("/login")
+            setMessage('Hello, World!')
+          }, 3000);
       } else {
         setMessage("Une erreur s'est produite");
       }
@@ -67,6 +69,7 @@ function SignUp() {
       "Email :" + email,
       "Password :" + password
     );
+
   }
 
   return (
@@ -117,7 +120,6 @@ function SignUp() {
             />
             <button
               type="submit"
-              onClick={() => navigate("/login")}
               className="sign-up-btn"
             >
               Je m'inscris

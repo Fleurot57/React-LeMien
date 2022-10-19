@@ -36,10 +36,6 @@ function Login() {
     result = await result.json();
     localStorage.setItem('token', result.token);
 
-    if (!Login) {
-      return null;
-    }
-
 }
 
   return (
