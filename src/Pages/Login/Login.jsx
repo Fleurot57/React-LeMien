@@ -41,7 +41,6 @@ function Login() {
         setMessage("Connecter avec succée");
         setTimeout(() => { Navigate("/"); }, 3000);
         toast.info("Connexion reussi, Redirection")
-
       } else {
         setMessage("Une erreur s'est produite");
       }
@@ -82,7 +81,7 @@ function Login() {
             <div className="message">{message ? <p>{message}</p> : null}</div>
           </form>
           <div id="login-form-bottom">
-            <p className="mb-2 login-account">Tu as un compte ?</p>
+            <p className="mb-2 login-account">Tu n'as pas de compte ?</p>
 
             <Link to="/signUp">
               <button className="login-create-btn">Je m'inscris</button>
@@ -90,7 +89,7 @@ function Login() {
           </div>
         </div>
       </div>
-      < ToastContainer autoClose = { 3000 } />  
+      < ToastContainer/>  
     </section>
   );
 }

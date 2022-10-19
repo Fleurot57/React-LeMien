@@ -1,6 +1,8 @@
 import "./SignUp.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Title
 //Formulaire : input(Nom), Input(prénom), input(mail), input(mdp)
@@ -54,13 +56,14 @@ function SignUp() {
         result.success &&
         setTimeout(() => {
           navigate("/login");
-        }, 2000)
+        }, 5000)
       ) {
         setFirstName("");
         setLastName("");
         setEmail("");
         setPassword("");
         setMessage("L'utilisateur a été créé avec succès");
+        toast.info("Inscription reussi, Redirection")
       } else {
         setMessage("Une erreur s'est produite");
       }
@@ -135,6 +138,7 @@ function SignUp() {
           </div>
         </div>
       </div>
+      < ToastContainer/>
     </section>
   );
 }
