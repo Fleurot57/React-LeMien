@@ -8,11 +8,26 @@ import { useNavigate } from "react-router-dom";
 //Button (SignUp)
 
 function SignUp() {
-  // It's usually better to use redirect in loaders and actions than this hook
-  // The useNavigate hook returns a function that lets you navigate programmatically
+  // Le Hook useNavigate renvoie une fonction qui permet de naviguer de manière programmatique.
+  // Source : https://reactrouter.com/en/main/hooks/use-navigate
+
+  // Je crée la constante navigate qui utilise le Hook useNavigate pour naviguer vers une page.
   const navigate = useNavigate();
 
-  // States for registration
+  /*  De cette manière, je créer un objet avec tous les attribus d'un utilisateur.
+    Une autre façon de faire est possible et c'est l'autre façon qu'on va utiliser. 
+
+const [userProfile, setUserProfile] = useState([]);
+
+  const useReference = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    message: "",
+  }; */
+
+  // Je crée toutes les constantes nécessaire à chacun des utilisateurs.
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,8 +42,16 @@ function SignUp() {
   //Nom, prénom, email, password.
 
   async function handleSubmitSignUp(e) {
+    // J'empêche l'action par défaut de se déclenche.
+    // L'action initiale est le recharchement de la page. La page ne se rechargera pas lorsque l'utulisateur clique sur « Je m'inscris ».
     e.preventDefault();
+
+    // Source ++ : https://javascript.info/try-catch
+    // Source : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/try...catch
+    // L'instruction try...catch regroupe des instructions à exécuter et définit une réponse si l'une de ces instructions provoque une exception.
+    // Dans le « try » on définit les instructions qu'on souhaite exécuter.
     try {
+      // Je crée une variable « user » sous la forme d'un objet qui contient tous les attributs d'un utilisateur.
       let user = {
         firstname: firstName,
         lastname: lastName,
@@ -36,6 +59,7 @@ function SignUp() {
         password: password,
       };
 
+      // Je crée la constante option qui (fait quoi ?)
       const options = {
         method: "POST",
         headers: {
@@ -43,11 +67,18 @@ function SignUp() {
         },
         body: JSON.stringify(user),
       };
+
+      // Source : https://community.lebocal.academy/private/resources/Reque%CC%82tes%20asynchrones.pdf
+      // Je crée la constante « result » qui sera le résultat de la promesse (informations que je recevrais de l'API) en utilisant le mot clef « await ».
+      // Qu'est ce qu'une promesse ? Source : https://developer.mozilla.org/fr/docs/Learn/JavaScript/Asynchronous/Promises
       let result = await fetch(
         "https://social-network-api.osc-fr1.scalingo.io/lemien/register",
         options
       );
 
+      // Source : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
+      // Await permet d’attendre qu’une fonction ait fini de s’exécuter et permet de récupérer la valeur retournée dans le cas d’une promesse résolue. Dans le cas d’une promesse rejetée, await ne récupèrera aucune valeur.
+      // Je détermine que « result » est le résultat de la promesse (information que je recevrais de l'API)
       result = await result.json();
       if (result) {
         setFirstName("");
@@ -59,10 +90,16 @@ function SignUp() {
         }, 3000);
       } else {
         setMessage("Une erreur s'est produite");
+
+        // Source ++ : https://javascript.info/try-catch
+        // Si une erreur se produit, alors l'exécution du try est arrêtée, et le contrôle passe au début du catch (error).
+        // La variable error (nous pouvons utiliser n'importe quel nom pour elle) contiendra un objet d'erreur avec des détails sur ce qui s'est passé.
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
+
+    // Lors de l'inscription, je souhaite que la console affiche tous les attributs de l'utilisateur.
     console.log(
       "Prénom :" + firstName,
       "Nom :" + lastName,
