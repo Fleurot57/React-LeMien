@@ -1,8 +1,8 @@
 import "./SignUp.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //Title
 //Formulaire : input(Nom), Input(prénom), input(mail), input(mdp)
@@ -94,7 +94,7 @@ const [userProfile, setUserProfile] = useState([]);
         setEmail("");
         setPassword("");
         setMessage("L'utilisateur a été créé avec succès");
-        toast.info("Inscription reussi, Redirection")
+        toast.info("Inscription reussi, Redirection");
       }
       // Lorsque que l'inscription est validé, la condition récupére l'ensemble des variables d'états de l'utilisateur et affiche le messge « L'utilisateur a été créé avec succès ».
       // S'il n'y a pas eu d'erreur, alors catch (err) est ignoré : l'exécution atteint la fin de try et continue, en sautant catch.
@@ -178,7 +178,7 @@ const [userProfile, setUserProfile] = useState([]);
           </div>
         </div>
       </div>
-      < ToastContainer/>
+      <ToastContainer />
     </section>
   );
 }
