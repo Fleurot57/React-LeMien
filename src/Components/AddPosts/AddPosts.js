@@ -1,18 +1,18 @@
 import './AddPosts.css';
 import Like from "../Like/Like";
-import Comment from "../Comment/Comment";
+import CommentBox from "../CommentBox/CommentBox";
 
 
 
 
 
-function AddPosts({MyUserName, MyPost }){
+function AddPosts({title, content }){
     return(
         <div className="AddPost">
-            <h3>{MyUserName}</h3>
-            <p>{MyPost}</p>
-             <Like/>
-             <Comment/>
+            <h3>{title}</h3>
+            <p>{content}</p>
+            <Like/>
+            <CommentBox/>
 
         </div>
     )

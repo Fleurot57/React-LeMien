@@ -36,13 +36,13 @@ function ViewPost() {
 
   useEffect(() => {getPosts()}, []);
 
-  console.log(posts);
+
 
   return (
     <div>
       <h2>Feeds</h2>
       <ul>
-        {posts.map((post, index) => < Post key={index} user={post.title} lePost={post.content} />)}
+        {posts.map((post, index) => < Post key={index} title={post.title} content={post.content} />)}
       </ul>
     </div>
   );

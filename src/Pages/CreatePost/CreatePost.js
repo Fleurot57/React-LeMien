@@ -35,9 +35,7 @@ console.log(newPost);
     const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/LeMien/post",options);
       let data = await response.json();
   
-      const postServeur = data.newPost;
-      console.log(postServeur);
-      setNewPost(postServeur);
+      
 if (data.success) {
   Navigate ("/")
 } 
