@@ -21,10 +21,10 @@ function SignUp() {
 
   // States for checking the errors
   // const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
 
   // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
-  //Nom, prénom, email, password.
+  // Nom, prénom, email, password.
 
   async function handleSubmitSignUp(e) {
     e.preventDefault();
@@ -49,14 +49,13 @@ function SignUp() {
       );
 
       result = await result.json();
-      if (result.status && !200) {
-          setFirstName("");
-          setLastName("");
-          setEmail("");
-          setPassword("");
-          setTimeout(() => { navigate("/login")
-            setMessage('Hello, World!')
-          }, 3000);
+      console.log(result);
+      if (result.success) {
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
+        setMessage("L'utilisateur a été créé avec succès");
       } else {
         setMessage("Une erreur s'est produite");
       }
@@ -118,10 +117,7 @@ function SignUp() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Mot de passe"
             />
-            <button
-              type="submit"
-              className="sign-up-btn"
-            >
+            <button type="submit" className="sign-up-btn">
               Je m'inscris
             </button>
             <div className="message">{message ? <p>{message}</p> : null}</div>
