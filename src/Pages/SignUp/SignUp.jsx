@@ -1,8 +1,7 @@
 import "./SignUp.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 //Title
 //Formulaire : input(Nom), Input(prénom), input(mail), input(mdp)
@@ -22,10 +21,10 @@ function SignUp() {
 
   // States for checking the errors
   // const [submitted, setSubmitted] = useState(false);
-  // const [error, setError] = useState(false);
+  const [error, setError] = useState(false);
 
   // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
-  // Nom, prénom, email, password.
+  //Nom, prénom, email, password.
 
   async function handleSubmitSignUp(e) {
     e.preventDefault();
@@ -50,20 +49,14 @@ function SignUp() {
       );
 
       result = await result.json();
-
-      console.log(result);
-      if (
-        result.success &&
-        setTimeout(() => {
-          navigate("/login");
-        }, 5000)
-      ) {
+      if (result) {
         setFirstName("");
         setLastName("");
         setEmail("");
         setPassword("");
-        setMessage("L'utilisateur a été créé avec succès");
-        toast.info("Inscription reussi, Redirection")
+        setTimeout(() => { navigate("/login")
+          setMessage('Hello, World!')
+        }, 3000);
       } else {
         setMessage("Une erreur s'est produite");
       }
@@ -76,6 +69,7 @@ function SignUp() {
       "Email :" + email,
       "Password :" + password
     );
+
   }
 
   return (
@@ -124,7 +118,10 @@ function SignUp() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Mot de passe"
             />
-            <button type="submit" className="sign-up-btn">
+            <button
+              type="submit"
+              className="sign-up-btn"
+            >
               Je m'inscris
             </button>
             <div className="message">{message ? <p>{message}</p> : null}</div>
@@ -138,7 +135,6 @@ function SignUp() {
           </div>
         </div>
       </div>
-      < ToastContainer/>
     </section>
   );
 }
