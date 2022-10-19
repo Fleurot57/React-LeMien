@@ -3,7 +3,6 @@ import { useState } from "react";
 import AddPosts from '../../Components/AddPosts/AddPosts';
 
 
-
 function CreatePost() {
 
   const [newPost, setNewPost] = useState("");
@@ -51,7 +50,7 @@ async function postPosts() {
 
       <h3>Create Post</h3>
       
-      <p className='userName'>user:</p>
+      <p className='userName'>user: </p>
       
       <div > 
         <form id="addPostForm" onSubmit={ e=>e.preventDefault()}>

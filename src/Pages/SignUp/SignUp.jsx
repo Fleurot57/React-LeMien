@@ -1,25 +1,31 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Title
 //Formulaire : input(Nom), Input(prénom), input(mail), input(mdp)
 //Button (SignUp)
 
 function SignUp() {
+  // It's usually better to use redirect in loaders and actions than this hook
+  // The useNavigate hook returns a function that lets you navigate programmatically
+  const navigate = useNavigate();
+
   // States for registration
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- // const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   // States for checking the errors
- // const [submitted, setSubmitted] = useState(false);
- // const [error, setError] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
+  // const [error, setError] = useState(false);
 
   // Cette fonction permet d'envoyer les informations de l'utilisateur à l'API.
-  //Nom, prénom, email, password.
+  // Nom, prénom, email, password.
+
   async function handleSubmitSignUp(e) {
     e.preventDefault();
     try {
@@ -43,7 +49,8 @@ function SignUp() {
       );
 
       result = await result.json();
-      /*       if (result.status === 200) {
+      console.log(result);
+      if (result.success) {
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -51,9 +58,9 @@ function SignUp() {
         setMessage("L'utilisateur a été créé avec succès");
       } else {
         setMessage("Une erreur s'est produite");
-      } */
-    } catch (err) {
-      console.log(err);
+      }
+    } catch (error) {
+      console.log(error);
     }
     console.log(
       "Prénom :" + firstName,
@@ -61,6 +68,7 @@ function SignUp() {
       "Email :" + email,
       "Password :" + password
     );
+
   }
 
   return (
@@ -112,16 +120,14 @@ function SignUp() {
             <button type="submit" className="sign-up-btn">
               Je m'inscris
             </button>
-            {/*           <div className="message">{message ? <p>{message}</p> : null}</div> */}
+            <div className="message">{message ? <p>{message}</p> : null}</div>
           </form>
           <div id="sign-up-form-bottom">
             <p className="mb-2 create-account">Tu as déjà un compte ?</p>
 
-            <Link to="/login">
-              <button className="sign-in-btn">Je m'indentifie</button>
-            </Link>
-
-
+            <button className="sign-in-btn" onClick={() => navigate("/login")}>
+              Je m'indentifie
+            </button>
           </div>
         </div>
       </div>
