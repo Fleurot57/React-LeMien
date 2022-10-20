@@ -38,7 +38,7 @@ function Login() {
       if (result.success) {
         setEmail("");
         setPassword("");
-        setMessage("Connecter avec succée");
+        setMessage("connecté avec succès");
         setTimeout(() => { Navigate("/"); }, 3000);
         toast.info("Connexion reussi, Redirection")
       } else {

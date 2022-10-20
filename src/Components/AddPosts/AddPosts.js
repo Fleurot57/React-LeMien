@@ -6,7 +6,7 @@ import CommentBox from "../CommentBox/CommentBox";
 
 
 
-function AddPosts({title, content }){
+function AddPosts({title, content, _id}){
     return(
         <div className="AddPost">
             <h3>{title}</h3>

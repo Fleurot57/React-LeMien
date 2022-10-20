@@ -2,6 +2,8 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Title
 //Formulaire : input(Nom), Input(prénom), input(mail), input(mdp)
@@ -33,6 +35,7 @@ const [userProfile, setUserProfile] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const Navigate = useNavigate();
 
   // States for checking the errors
   // const [submitted, setSubmitted] = useState(false);
@@ -80,14 +83,14 @@ const [userProfile, setUserProfile] = useState([]);
       // Await permet d’attendre qu’une fonction ait fini de s’exécuter et permet de récupérer la valeur retournée dans le cas d’une promesse résolue. Dans le cas d’une promesse rejetée, await ne récupèrera aucune valeur.
       // Je détermine que « result » est le résultat de la promesse (information que je recevrais de l'API)
       result = await result.json();
-      if (result) {
+      if (result.success) {
         setFirstName("");
         setLastName("");
         setEmail("");
         setPassword("");
-        setTimeout(() => { navigate("/login")
-          setMessage('Hello, World!')
-        }, 3000);
+        setMessage("connecté avec succès");
+        setTimeout(() => { Navigate("/src/Pages/SignUp/SignUp.jsx"); }, 3000);
+        toast.info("Inscription réussi, Redirection")
       } else {
         setMessage("Une erreur s'est produite");
 
@@ -172,6 +175,7 @@ const [userProfile, setUserProfile] = useState([]);
           </div>
         </div>
       </div>
+      < ToastContainer/>  
     </section>
   );
 }

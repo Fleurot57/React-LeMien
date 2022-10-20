@@ -21,6 +21,7 @@ function Profil() {
 
     const PostsList = data.posts;
     console.log(PostsList);
+    
 
 // je stock que mes posts dans tableau vide
 //let mesPosts = []
@@ -31,9 +32,6 @@ function Profil() {
     setPostsList(PostsList);
   };
   useEffect(() => {getMyPosts()}, []);
-  
-
-
 
   return (
     <div>
