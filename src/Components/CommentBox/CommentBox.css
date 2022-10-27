@@ -1,0 +1,19 @@
+.box {
+display: grid;
+width: 40%;
+}
+.buttonComment {
+    width: 2vw;
+    position: relative;
+    justify-self: end;
+    right: 3%;
+    bottom: 126%;
+    cursor: pointer;
+}
+.boxComment {
+    height: 5vh;
+    border-radius: 20px
+}
+textarea {
+    resize: none;
+  }

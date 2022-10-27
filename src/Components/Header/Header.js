@@ -12,8 +12,13 @@ import SignUp from "../../Pages/SignUp/SignUp";
 import CreatePost from "../../Pages/CreatePost/CreatePost";
 import Profil from "../../Pages/Profil/Profil";
 import Error from "../../Pages/Error/Error";
+import Logout from "../Logout/Logout";
 
 function Header() {
+
+  const edited = true;
+
+
   return (
     <Router>
       <div className="navigation">
@@ -35,6 +40,9 @@ function Header() {
               </Link>
             </li>
             <div>
+            <li>
+                <Logout/>
+              </li>
               <li>
                 <Link className="btn-login" to="/signup">
                   <span>Inscription</span>

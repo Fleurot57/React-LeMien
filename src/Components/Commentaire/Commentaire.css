@@ -1,0 +1,6 @@
+.contentComment {
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
+    padding-left: 5%;
+    margin-bottom: 5%;
+    border-radius: 8px;
+}

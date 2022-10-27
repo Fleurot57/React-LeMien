@@ -12,9 +12,9 @@ function Like () {
     }
 
     return(
-        <div>
+        <div class="boxLike">
+            <img onClick={handleClick} class="buttonLike" src="https://cdn-icons-png.flaticon.com/512/1246/1246261.png"></img>
             <p>Vous avez {likes} like</p>
-            <button onClick={handleClick}>Like</button>
         </div>
     )
 };

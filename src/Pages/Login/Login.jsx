@@ -40,7 +40,7 @@ function Login() {
         setPassword("");
         setMessage("connecté avec succès");
         setTimeout(() => { Navigate("/"); }, 3000);
-        toast.info("Connexion reussi, Redirection")
+        toast.info("Connexion reussi, Redirection");
       } else {
         setMessage("Une erreur s'est produite");
       }

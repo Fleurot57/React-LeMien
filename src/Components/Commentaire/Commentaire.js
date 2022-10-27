@@ -4,7 +4,7 @@ import './Commentaire.css'
 function Commentaire(props) {
 
   return (
-    <div>
+    <div class="contentComment">
          <p>{props.content}</p>
     </div>
   )

@@ -1,15 +1,13 @@
 import "./Logout.css";
-import { useNavigation } from "react-router-dom";
 
 //Roger
 //Link de redirection à la déconnection
 
 function Logout() {
-  const history = useNavigation();
 
   function handleClickLogout(e) {
+    e.preventDefault();
     localStorage.removeItem("token");
-    history.reload();
   }
 
   return (
