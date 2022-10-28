@@ -18,7 +18,6 @@ function Header() {
 
   const edited = true;
 
-
   return (
     <Router>
       <div className="navigation">
@@ -50,13 +49,14 @@ function Header() {
               </li>
               <li>
                 <Link className="btn-login" to="/login">
-                  <span>Connexion</span>
+                <span>Connexion</span>
                 </Link>
               </li>
             </div>
           </ul>
         </nav>
       </div>
+      
 
       <Routes>
         <Route path="/" element={<Home />}></Route>

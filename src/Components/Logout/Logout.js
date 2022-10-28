@@ -12,8 +12,8 @@ function Logout() {
 
   return (
     <div>
-      <button onClick={handleClickLogout} id="log-out-btn">
-        ❌
+      <button class="logout" onClick={handleClickLogout} id="log-out-btn">
+        déconnection
       </button>
     </div>
   );

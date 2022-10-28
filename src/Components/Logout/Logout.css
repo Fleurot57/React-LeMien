@@ -1,12 +1,20 @@
 #log-out-btn {
-  height: 6vh;
-  background-color: white;
-  border: 0;
-  padding: 1rem;
-  color: white;
-  font-weight: 600;
-  font-size: large;
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 2% !important;
+  left: 8%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
-  outline: none;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  transition: all 250ms;
+}
+
+.logout {
+  color:black
 }
